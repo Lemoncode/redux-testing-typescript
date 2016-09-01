@@ -6,7 +6,7 @@ import http from './http';
 
 // Sync mock data API, inspired from:
 // https://gist.github.com/coryhouse/fd6232f95f9d601158e4
-class MemberAPI {
+class MemberApi {
   private _idSeed : number;
 
   public constructor() {
@@ -85,4 +85,4 @@ class MemberAPI {
 
 }
 
-export default new MemberAPI();
+export const memberApi = new MemberApi();

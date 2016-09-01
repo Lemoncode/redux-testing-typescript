@@ -1,6 +1,8 @@
+import {actionsEnums} from "./actionsEnum";
+
 const httpCallCompleted = () => {
    return {
-     type: 'HTTP_GET_CALL_COMPLETED'
+     type: actionsEnums.HTTP_GET_CALL_COMPLETED
    }
 }
 
