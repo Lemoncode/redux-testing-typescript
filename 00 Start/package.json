@@ -4,7 +4,8 @@
   "description": "This is the starting point, this sample is a refactored version of\r \"11 Spinner Async\" that can be found in the [react-typescript-samples\r repository](https://github.com/Lemoncode/react-typescript-samples).",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "typings install",
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",

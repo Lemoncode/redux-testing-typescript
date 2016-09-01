@@ -1,6 +1,6 @@
 import * as Q from 'q';
 import RepoEntity from './repoEntity';
-import http from '../http/http';
+import http from './http';
 
 class RepoAPI {
 

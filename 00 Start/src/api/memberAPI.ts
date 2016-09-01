@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import * as Q from 'q';
 import MemberEntity from './memberEntity';
 import MembersMockData from './memberMockData';
-import http from '../http/http';
+import http from './http';
 
 // Sync mock data API, inspired from:
 // https://gist.github.com/coryhouse/fd6232f95f9d601158e4
