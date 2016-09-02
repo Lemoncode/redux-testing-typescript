@@ -1,5 +1,5 @@
 
-export default class MemberEntity {
+export class MemberEntity {
   id: number;
   login: string;
   avatar_url: string;

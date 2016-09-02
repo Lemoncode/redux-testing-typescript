@@ -1,4 +1,4 @@
-import http from '../../api/http';
+import {http} from '../../api/http';
 import {actionsEnums} from "./actionsEnum";
 
 export const httpInitializeDispatcher = (dispatcher) => {

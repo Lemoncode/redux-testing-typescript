@@ -1,4 +1,4 @@
-export default class RepoEntity {
+export class RepoEntity {
   id: number;
   name: string;
 

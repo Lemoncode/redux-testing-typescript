@@ -1,4 +1,4 @@
-import MemberEntity from '../api/MemberEntity';
+import {MemberEntity} from '../api/MemberEntity';
 import MemberFormErrors from './memberFormErrors';
 
 class MemberFormValidator {

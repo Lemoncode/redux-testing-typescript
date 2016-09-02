@@ -1,4 +1,4 @@
-import RepoEntity from '../api/repoEntity';
+import {RepoEntity} from '../api/repoEntity';
 
 export default (state: Array<RepoEntity> = [], action) => {
   switch (action.type){

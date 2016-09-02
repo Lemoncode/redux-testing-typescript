@@ -1,5 +1,5 @@
 import objectAssign = require('object-assign');
-import MemberEntity from "../api/memberEntity";
+import {MemberEntity} from "../api/memberEntity";
 import MemberFormErrors from "../validations/memberFormErrors";
 
 
