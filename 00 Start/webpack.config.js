@@ -31,7 +31,8 @@ module.exports = {
     contentBase: './dist', //Content base
     inline: true, //Enable watch and live reload
     host: 'localhost',
-    port: 8080
+    noInfo: true,
+    port: 8080    
   },
 
   // http://webpack.github.io/docs/configuration.html#devtool

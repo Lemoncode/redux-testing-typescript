@@ -2,7 +2,7 @@ import {actionsEnums} from "./actionsEnum";
 
 const httpCallStarted = () => {
    return {
-     type: actionsEnums.HTTP_GET_CALL_COMPLETED
+     type: actionsEnums.HTTP_GET_CALL_STARTED
    }
 }
 
