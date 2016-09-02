@@ -43,8 +43,9 @@ class MemberPage extends React.Component<Props, {}> {
     }
   }
 
- // https://github.com/reactjs/redux/issues/580
  componentWillReceiveProps(nextProps) {
+   // this can be simplified using custom Middleware
+   // see sample: https://github.com/Lemoncode/react-typescript-samples/tree/master/17%20Custom%20Middleware
    if(this.props.saveCompleted != nextProps.saveCompleted
       && nextProps.saveCompleted) {
 
