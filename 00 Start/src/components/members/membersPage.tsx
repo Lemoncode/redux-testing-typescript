@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { MemberEntity } from '../../api/memberEntity';
-import MemberList from './memberList';
+import { MembersList } from './memberList';
 import { memberRequest } from './actions/membersRequest';
 
 // Presentational
@@ -27,7 +27,7 @@ class MembersPage extends React.Component<Props, {}> {
 
        return (
         <div className="row">
-          <MemberList members={this.props.members}/>
+          <MembersList members={this.props.members}/>
         </div>
        );
   }
