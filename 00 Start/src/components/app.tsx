@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
 
-import Header from '../common/components/header';
+import {Header} from '../common/components/header';
 import {ContainerSpinnerComponent as Spinner} from '../common/components/spinner';
 import reducers from '../reducers';
 
