@@ -1,7 +1,8 @@
+import {actionsEnums} from "../../../common/actions/actionsEnum";
 
 const resetSaveCompleted = () => {
    return {
-     type: 'MEMBER_RESET_SAVE_COMPLETED'
+     type: actionsEnums.memberPage.MEMBER_RESET_SAVE_COMPLETED
    }
 }
 

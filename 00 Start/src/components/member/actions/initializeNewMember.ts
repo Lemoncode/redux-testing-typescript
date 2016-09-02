@@ -1,3 +1,4 @@
+import {actionsEnums} from "../../../common/actions/actionsEnum";
 
 export const initializeNewMember = () => {
    return {

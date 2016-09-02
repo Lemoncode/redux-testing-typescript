@@ -1,3 +1,4 @@
+import {actionsEnums} from "../../../common/actions/actionsEnum";
 import {MemberEntity} from "../../../api/MemberEntity";
 import {memberApi} from '../../../api/memberApi';
 import {MemberFormErrors} from '../../../validations/memberFormErrors';
@@ -12,7 +13,7 @@ const saveMember = (member : MemberEntity) => {
   }
 
    return {
-     type: 'MEMBER_SAVE'
+     type: actionsEnums.memberPage.MEMBER_SAVE
      ,errors : errorsSave
    }
 }

@@ -1,3 +1,4 @@
+import {actionsEnums} from "../common/actions/actionsEnum";
 import objectAssign = require('object-assign');
 
 // Later on add more flags, like error or something like that?
@@ -13,14 +14,14 @@ export default (state : HttpState = {httpCallsInProgress : false, numberOfCalls:
   let callsInProgress : boolean = null;
 
   switch (action.type) {
-    case 'HTTP_GET_CALL_STARTED':
+    case actionsEnums.common.HTTP_GET_CALL_STARTED:
       numberOfCalls = state.numberOfCalls + 1;
       callsInProgress = true;
 
       newState = objectAssign({}, state, {httpCallsInProgress: callsInProgress, numberOfCalls: numberOfCalls});
       return newState;
 
-    case 'HTTP_GET_CALL_COMPLETED':
+    case actionsEnums.common.HTTP_GET_CALL_COMPLETED:
       numberOfCalls = state.numberOfCalls - 1;
       callsInProgress = (numberOfCalls > 0);
 

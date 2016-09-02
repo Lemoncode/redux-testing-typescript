@@ -5,6 +5,6 @@ export const httpInitializeDispatcher = (dispatcher) => {
   http.Initialize(dispatcher);
 
   return {
-    type: actionsEnums.HTTP_INITIALIZE_DISPATCHER
+    type: actionsEnums.common.HTTP_INITIALIZE_DISPATCHER
   }
 }

@@ -1,4 +1,5 @@
 import objectAssign = require('object-assign');
+import {actionsEnums} from "../common/actions/actionsEnum";
 import {MemberEntity} from "../api/memberEntity";
 import {MemberFormErrors} from "../validations/memberFormErrors";
 
@@ -29,16 +30,16 @@ export default (state : MemberState = new MemberState(), action) => {
   let newState : MemberState = null;
 
   switch (action.type) {
-    case 'MEMBER_INITIALIZE_NEW':
+    case actionsEnums.memberPage.MEMBER_INITIALIZE_NEW:
       newState = objectAssign({}, state, {member: new MemberEntity(), errors: new MemberFormErrors(), isValid: false});
       return newState;
 
-    case 'MEMBER_LOAD':
+    case actionsEnums.memberPage.MEMBER_LOAD:
     newState = objectAssign({}, state, {dirty: false, member: action.member, errors: new MemberFormErrors(), isValid: true});
 
     return newState;
 
-    case 'MEMBER_UI_INPUT':
+    case actionsEnums.memberPage.MEMBER_UI_INPUT:
       let fieldName = action['fieldName'];
       let value = action['value']
 
@@ -48,16 +49,16 @@ export default (state : MemberState = new MemberState(), action) => {
       newState = objectAssign({}, state, {member: newMember, dirty: true});
       return newState;
 
-    case 'MEMBER_SAVE':
+    case actionsEnums.memberPage.MEMBER_SAVE:
       if(action.errors.isEntityValid) {
         newState = objectAssign({}, state, {saveCompleted: true});
       } else {
         newState = objectAssign({}, state, {isValid: action.errors.isEntityValid, errors: action.errors});
       }
 
-  return newState;
+      return newState;
 
-    case 'MEMBER_RESET_SAVE_COMPLETED':
+    case actionsEnums.memberPage.MEMBER_RESET_SAVE_COMPLETED:
       newState = objectAssign({}, state, {saveCompleted: false});
       return newState;
 
