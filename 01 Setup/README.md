@@ -1,15 +1,14 @@
-# Sample 00: Start
+# Sample 01: Setup
 
-This is the starting point, this sample is a refactored version of
-"11 Spinner Async" that can be found in the [react-typescript-samples
-repository](https://github.com/Lemoncode/react-typescript-samples).
+In this sample we take as starting point sample: "00 Start" and we will add all the setup needed to support unit testing on this project.
 
-# About the sample:
+Summary:
 
-- Is just a master detail like application.
-- Users can browse a list of "fake" team members (using a fake api).
-- When a given user click on one of the users in the fake member list
-it navigates to a detail page (the detail info is loaded from GitHub rest api).
-- The detail window includes some basic form validation.
-- Save button only validates but the operation is only performed locally
-(we are not hitting the real github api just to avoid trolling github).
+- Add all the needed packages.
+- Configure karma.
+- Create a simple test on a reducer.
+- Start our test.
+
+
+
+# Steps:
