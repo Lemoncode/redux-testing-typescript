@@ -1,5 +1,5 @@
 
-export default class MemberErrors {
+export class MemberFormErrors {
   id: string;
   login: string;
   avatar_url: string;
@@ -10,6 +10,6 @@ export default class MemberErrors {
     this.id = "";
     this.login = "";
     this.avatar_url = "";
-    
+
   }
 }
