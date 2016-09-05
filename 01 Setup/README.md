@@ -202,6 +202,18 @@ describe('httpReducer', () => {
 
   ````
 
+We are going to do implement a little trick to compile all
+specs in the project in a single file and properly generate
+maps, let's create under the root folder a subfolder named "test" and create a file called "test_index.js", the file will contain the following code:
+
+````javascript
+// require all modules ending in ".spec" from the
+// current directory and all subdirectories
+
+var testsContext = require.context("../src", true, /.spec$/);
+testsContext.keys().forEach(testsContext);
+````
+
 Now let's add the karma.conf configuration to run the tests
 
 Let's add  command to our npm to run the tests
