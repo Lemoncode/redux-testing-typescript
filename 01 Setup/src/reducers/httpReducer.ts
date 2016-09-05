@@ -5,6 +5,11 @@ import objectAssign = require('object-assign');
 export class HttpState {
     httpCallsInProgress : boolean;
     numberOfCalls : number;
+
+    constructor() {
+      this.httpCallsInProgress = false;
+      this.numberOfCalls = 0;
+    }
 }
 // Just to show how combine reducers work, we have
 // divided into two reducers member load + member load/update/delete
@@ -22,7 +27,7 @@ export const http =  (state : HttpState = {httpCallsInProgress : false, numberOf
       return newState;
 
     case actionsEnums.common.HTTP_GET_CALL_COMPLETED:
-      numberOfCalls = state.numberOfCalls - 1;
+      numberOfCalls = (state.numberOfCalls > 0) ? state.numberOfCalls - 1 : 0;
       callsInProgress = (numberOfCalls > 0);
 
       newState = objectAssign({}, state, {httpCallsInProgress: callsInProgress, numberOfCalls: numberOfCalls});

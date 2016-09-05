@@ -216,6 +216,91 @@ testsContext.keys().forEach(testsContext);
 
 Now let's add the karma.conf configuration to run the tests
 
-Let's add  command to our npm to run the tests
+In this configuration we:
+  - Setup the test frameworks / libraries
+we are going to use (mocha, chai, sinon).
+
+  -  Indicate the entry point (test/index.js).
+
+  - Configure karma webpack entry (map, ts loaders...).
+
+  - Configure enzyme for proper component testing (we will use it
+    in further samples, component testing).
+
+  -  Setup the port where will run and indicate the browser it will run.
+
+````javascript
+var webpackConfig = require('./webpack.config');
+
+module.exports = function (config) {
+  config.set({
+    basePath: '',
+    frameworks: ['mocha', 'chai', 'sinon'],
+    files: [
+      './test/test_index.js'
+    ],
+    exclude: [
+    ],
+    preprocessors: {
+      './test/test_index.js': ['webpack', 'sourcemap']
+    },
+    webpack: {
+      devtool: 'inline-source-map',
+      module: {
+          loaders: [
+              {
+                  test: /\.(ts|tsx)$/,
+                  exclude: /node_modules/,
+                  loader: 'ts-loader'
+            },
+            //Configuration required by enzyme
+            {
+                test: /\.json$/,
+                loader: 'json'
+            }
+          ]
+      },
+      resolve: {
+          //Added .json extension required by cheerio (enzyme dependency)
+          extensions: ['', '.js', '.ts', '.tsx', '.json']
+      },
+      //Configuration required by enzyme
+      externals: {
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': 'window',
+      }
+    },
+    webpackMiddleware: {
+        // webpack-dev-middleware configuration
+        // i. e.
+        noInfo: true
+    },
+
+    reporters: ['progress'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false,
+    concurrency: Infinity
+  })
+}
+````
+
+Let's add  command to our npm to run the tests (package.json)
+
+````json
+"scripts": {
+  //...
+  "test": "karma start"
+},
+
+````
 
 Let's run the tests from the command line
+
+````
+npm test
+````
