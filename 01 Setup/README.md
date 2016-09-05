@@ -15,6 +15,12 @@ create jest based samples in future samples_
 
 # Steps:
 
+A previous check, do we have all the app packages already installed? Let's ensure that, we will run npm install form the command prompt
+
+```
+npm install 
+```
+
 Let's start by installing the testing libraries / runners:
 
 - **chai:** BDD / TDD assertion framework for node.js and the browser that can be paired with any testing framework.
