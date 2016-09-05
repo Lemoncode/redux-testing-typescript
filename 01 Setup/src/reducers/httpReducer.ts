@@ -2,13 +2,13 @@ import {actionsEnums} from "../common/actions/actionsEnum";
 import objectAssign = require('object-assign');
 
 // Later on add more flags, like error or something like that?
-class HttpState {
+export class HttpState {
     httpCallsInProgress : boolean;
     numberOfCalls : number;
 }
 // Just to show how combine reducers work, we have
 // divided into two reducers member load + member load/update/delete
-export default (state : HttpState = {httpCallsInProgress : false, numberOfCalls: 0}, action) => {
+export const http =  (state : HttpState = {httpCallsInProgress : false, numberOfCalls: 0}, action) => {
   let newState : HttpState = null;
   let numberOfCalls : number = null;
   let callsInProgress : boolean = null;

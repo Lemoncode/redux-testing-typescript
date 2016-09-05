@@ -1,78 +1,6 @@
-# Sample 01: Setup
-
-In this sample we take as starting point sample: "00 Start" and we will add all the setup needed to support unit testing on this project.
-
-Summary:
-
-- Add all the needed packages.
-- Configure karma.
-- Create a simple test on a reducer.
-- Start our test.
-
-_Note: we have chosen as testing libraries: mocha, chai, sinon. New versions of Jest are gaining momentum, we have planned to
-create jest based samples in future samples_
-
-
-# Steps:
-
-A previous check, do we have all the app packages already installed? Let's ensure that, we will run npm install form the command prompt
-
-```
-npm install
-```
-
-Let's start by installing the testing libraries / runners:
-
-- **chai:** BDD / TDD assertion framework for node.js and the browser that can be paired with any testing framework.
-- **deep-freeze**:To ensure immutability of the reducers.
-- **enzyme**: Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.
-- **mocha**: Mocha is a feature-rich JavaScript test framework running on Node.js and in the browser, making asynchronous testing simple.
-- **redux-mock-store:** A mock store for testing your redux async action creators and middleware.
-- **sinon:** Standalone and test framework agnostic JavaScript test spies, stubs and mocks.
-- **karma:** test runner. A simple tool that allows you to execute JavaScript code in multiple real browsers.
-- **karma-chai:** chai plugin for karma.
-- **karma-chrome-launcher:** chrome browser support plugin for karma.
-- **karma-mocha:** mocha plugin for karma.
-- **karma-sinon:** sinon plugin for karma.
-- **karma-sourcemap-loader:** add source map support to karma (debugging).
-- **karma-webpack:** webpack support for karma.
-
-We will do that by running:
-
-```
-npm install chai deep-freeze enzyme mocha sinon
-redux-mock-store karma karma-chai karma-chrome-launcher
-karma-mocha karma-sinon karma-sourcemap-loader karma-webpack
- --save-dev
-```
-
-Then we will install the type definitions for some of this libraries:
-
-```
-typings install dt~mocha dt~chai dt~deep-freeze
-dt~sinon dt~enzyme --global --save
-```
-
-Let's create a simple test for a reducer:
-
-Under reducers let's create a subfolder called "specs" (we think is a good idea to keep specs near the real implementation of what we are testing, it's easier to peer for a developer).
-
-Under this spec folder, let's create a test set for the httpReducer, we will call this file: _httpreducer.spec.ts_:
-
-- The httpReducer: it keeps a counter of http calls that are in progress, whenever an http call is triggered or completed an external agent will trigger an action that will be trapped by this reducer and will increment / decrement the counter.
-
-- What we are going to test:
-    - Ensure empty setup (http calls counter is zero).
-    - When we launch a request start counter is incremented by one.
-    - When we launch a request and then complete counter is set back to zero.
-    - Some combined scenarios (two calls request, then two calls completed...)
-
-  The code of this tests:
-
-````javascript
 import { expect } from 'chai';
 import * as deepFreeze from 'deep-freeze';
-import { httpReducer, HttpState } from '../httpReducer';
+import { http as httpReducer, HttpState } from '../httpReducer';
 
 describe('httpReducer', () => {
     it('should return new HttpState with default values when passing initialState equals undefined and action equals {}', () => {
@@ -199,11 +127,3 @@ describe('httpReducer', () => {
         expect(finalState.httpCallsInProgress).to.be.true;
     });
 })
-
-  ````
-
-Now let's add the karma.conf configuration to run the tests
-
-Let's add  command to our npm to run the tests
-
-Let's run the tests from the command line
