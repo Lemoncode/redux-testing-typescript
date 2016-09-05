@@ -1,27 +1,3 @@
-# Sample 01: Setup
-
-In this sample we take as starting point sample: "01 Setup" and we will add all unit tests to actions (sync and async ones).
-
-Summary:
-
-- Implement tests for a sync action.
-- Implement test for an async one (thunk based).
-
-
-# Steps:
-
-Let's start with a synchrnous action, we will choose the LoadMember action (this action is synchronous just because we are using a fake api and returning hardcoded data).
-
-We are going to create a subfolder under actions called specs.
-
-Then we add the loadMember.spec.ts file, that will contain
-the tests to check that the action is behaving as expected.
-
-In this case the action is using an external service: the membersApi, we need to mock this service in order to simulate each of the cases, to do that we will use Sinon (mocking library).
-
-Below you will find the spec code:
-
-````javascript
 import { expect } from 'chai';
 import {actionsEnums} from '../../../../common/actions/actionsEnum';
 import { loadMember } from '../loadMember';
@@ -51,6 +27,3 @@ describe('loadMember', () => {
       expect(getMemberByIdMethodStub.calledWith(id)).to.be.true;
   }).bind(this));
 })
-````
-
-TODO: ASYNC ACTION
