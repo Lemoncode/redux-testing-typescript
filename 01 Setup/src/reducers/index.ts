@@ -19,7 +19,7 @@
 import { combineReducers } from 'redux';
 import member from './memberReducer';
 import members from './membersReducer';
-import http from './httpReducer';
+import {http} from './httpReducer';
 import repos from './reposReducer';
 
 export default combineReducers({
