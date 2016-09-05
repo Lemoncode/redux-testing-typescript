@@ -72,9 +72,11 @@ Under this spec folder, let's create a test set for the httpReducer, we will cal
 ````javascript
 import { expect } from 'chai';
 import * as deepFreeze from 'deep-freeze';
-import { httpReducer, HttpState } from '../httpReducer';
+import {actionsEnums} from "../../common/actions/actionsEnum";
+import { http as httpReducer, HttpState } from '../httpReducer';
 
 describe('httpReducer', () => {
+
     it('should return new HttpState with default values when passing initialState equals undefined and action equals {}', () => {
         let initialState = undefined;
         let action = {};
@@ -109,6 +111,7 @@ describe('httpReducer', () => {
         expect(finalState.httpCallsInProgress).to.be.false;
     });
 
+
     it('should return new HttpState with same values when passing initialState with HttpState.numberOfCalls equals 2 '+
         'and action equals {}', () => {
         let initialState = new HttpState();
@@ -125,7 +128,7 @@ describe('httpReducer', () => {
         'and action equals { type: "HTTP_GET_CALL_STARTED" }', () => {
         let initialState = new HttpState();
         let action = {
-            type: "HTTP_GET_CALL_STARTED"
+            type: actionsEnums.common.HTTP_GET_CALL_STARTED
         };
 
         deepFreeze(initialState);
@@ -141,7 +144,7 @@ describe('httpReducer', () => {
         initialState.numberOfCalls = 2;
 
         let action = {
-            type: "HTTP_GET_CALL_STARTED"
+            type: actionsEnums.common.HTTP_GET_CALL_STARTED
         };
 
         deepFreeze(initialState);
@@ -155,7 +158,7 @@ describe('httpReducer', () => {
         'and action equals { type: "HTTP_GET_CALL_COMPLETED" }', () => {
         let initialState = new HttpState();
         let action = {
-            type: "HTTP_GET_CALL_COMPLETED"
+            type: actionsEnums.common.HTTP_GET_CALL_COMPLETED
         };
 
         deepFreeze(initialState);
@@ -172,7 +175,7 @@ describe('httpReducer', () => {
         initialState.httpCallsInProgress = true;
 
         let action = {
-            type: "HTTP_GET_CALL_COMPLETED"
+            type: actionsEnums.common.HTTP_GET_CALL_COMPLETED
         };
 
         deepFreeze(initialState);
@@ -189,7 +192,7 @@ describe('httpReducer', () => {
         initialState.httpCallsInProgress = true;
 
         let action = {
-            type: "HTTP_GET_CALL_COMPLETED"
+            type: actionsEnums.common.HTTP_GET_CALL_COMPLETED
         };
 
         deepFreeze(initialState);
@@ -198,8 +201,8 @@ describe('httpReducer', () => {
         expect(finalState.numberOfCalls).to.be.equal(1);
         expect(finalState.httpCallsInProgress).to.be.true;
     });
-})
 
+})
   ````
 
 We are going to do implement a little trick to compile all
