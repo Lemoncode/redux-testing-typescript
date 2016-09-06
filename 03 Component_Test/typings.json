@@ -1,0 +1,24 @@
+{
+  "name": "redux-testing-typescript",
+  "dependencies": {},
+  "globalDependencies": {
+    "chai": "registry:dt/chai#3.4.0+20160601211834",
+    "deep-freeze": "registry:dt/deep-freeze#0.0.0+20160317120654",
+    "enzyme": "registry:dt/enzyme#2.4.1+20160709041153",
+    "jquery": "registry:dt/jquery#1.10.0+20160704162008",
+    "lodash": "registry:dt/lodash#4.14.0+20160830145422",
+    "mocha": "registry:dt/mocha#2.2.5+20160720003353",
+    "object-assign": "registry:dt/object-assign#4.0.1+20160819193737",
+    "q": "registry:dt/q#0.0.0+20160613154756",
+    "react": "registry:dt/react#0.14.0+20160829191040",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "react-redux": "registry:dt/react-redux#4.4.0+20160724070751",
+    "react-router": "registry:dt/react-router#2.0.0+20160828232736",
+    "react-router/history": "registry:dt/react-router/history#2.0.0+20160830150755",
+    "redux": "registry:dt/redux#3.5.2+20160703092728",
+    "redux-mock-store": "registry:dt/redux-mock-store#0.0.6+20160514173414",
+    "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921",
+    "sinon": "registry:dt/sinon#1.16.0+20160517064723",
+    "toastr": "registry:dt/toastr#2.1.1+20160510010435"
+  }
+}
