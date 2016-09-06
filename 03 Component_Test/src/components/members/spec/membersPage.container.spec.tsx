@@ -7,21 +7,7 @@ import * as membersActions from '../actions/membersRequest';
 import MembersPageContainer from "../membersPage";
 import {MemberEntity} from '../../../api/memberEntity';
 
-/*
-import configureStore = require('redux-mock-store');
-
-import MemberEntity from '../../../api/memberEntity';
-import RepoEntity from '../../../api/repoEntity';
-
-import * as loadReposActions from '../../../actions/loadRepos';
-*/
-
-// Typings from redux-mock-store are outdated and throw errors
-// added a workaround meanwhile is being corrected
-// https://github.com/arnaudbenard/redux-mock-store/issues/70
-/*
 const createStore = configureStore();
-
 
 describe('MembersPage container component', () => {
 
@@ -44,8 +30,10 @@ describe('MembersPage container component', () => {
                                                }
                                                );
 
+        // TODO: Check why we have to downcast it to any
+        const nonTypedMockStore : any = mockStore;
         let membersPageContainerWrapper = mount(
-          <Provider store={mockStore}>
+          <Provider store={nonTypedMockStore}>
               <MembersPageContainer />
           </Provider>
         );
@@ -56,7 +44,6 @@ describe('MembersPage container component', () => {
 
     }).bind(this));
 
-
     it('should renders MembersPage presentational component with members property equals empty' +
         'passing state equals { members: new Array<MemberEntity>() }',  sinon.test(() => {
         let sinon: Sinon.SinonStatic = this;
@@ -65,7 +52,7 @@ describe('MembersPage container component', () => {
         });
 
         let loadMembersActionMock = sinon.stub(membersActions,
-                                               'loadMembers',
+                                               'memberRequest',
                                                () => {
                                                  return {
                                                    type: 'dummy'
@@ -73,9 +60,10 @@ describe('MembersPage container component', () => {
                                                }
                                                );
 
-
+        // TODO: Check why we have to downcast it to any
+        const nonTypedMockStore : any = mockStore;
         let membersPageContainerWrapper = mount(
-            <Provider store={mockStore}>
+            <Provider store={nonTypedMockStore}>
                 <MembersPageContainer />
             </Provider>
         );
@@ -84,8 +72,7 @@ describe('MembersPage container component', () => {
         expect(membersPagePresentationalWrapper).not.to.be.undefined;
         expect(membersPagePresentationalWrapper.prop('members')).to.be.empty;
     }).bind(this));
-*/
-/*
+
     it('should renders MembersPage presentational component with members property equals array with one member' +
         'passing state equals { members: [member] }', sinon.test(() => {
         let sinon: Sinon.SinonStatic = this;
@@ -96,7 +83,7 @@ describe('MembersPage container component', () => {
         });
 
         let loadMembersActionMock = sinon.stub(membersActions,
-                                               'loadMembers',
+                                               'memberRequest',
                                                () => {
                                                  return {
                                                    type: 'dummy'
@@ -104,9 +91,10 @@ describe('MembersPage container component', () => {
                                                }
                                                );
 
-
+        // TODO: Check why we have to downcast it to any
+        const nonTypedMockStore : any = mockStore;
         let membersPageContainerWrapper = mount(
-            <Provider store={mockStore}>
+            <Provider store={nonTypedMockStore}>
                 <MembersPageContainer />
             </Provider>
         );
@@ -124,8 +112,8 @@ describe('MembersPage container component', () => {
             repos: undefined
         });
 
-        let loadMembersActionMock = sinon.stub(loadMembersActions,
-                                               'loadMembers',
+        let loadMembersActionMock = sinon.stub(membersActions,
+                                               'memberRequest',
                                                () => {
                                                  return {
                                                    type: 'dummy'
@@ -134,18 +122,10 @@ describe('MembersPage container component', () => {
                                                );
 
 
-         let loadReposActionMock = sinon.stub(loadReposActions,
-                                                'loadRepos',
-                                                () => {
-                                                  return {
-                                                    type: 'dummy'
-                                                  }
-                                                }
-                                                );
-
-
+        // TODO: Check why we have to downcast it to any
+        const nonTypedMockStore : any = mockStore;
         let membersPageContainerWrapper = mount(
-            <Provider store={mockStore}>
+            <Provider store={nonTypedMockStore}>
                 <MembersPageContainer />
             </Provider>
         );
@@ -155,94 +135,16 @@ describe('MembersPage container component', () => {
         expect(membersPagePresentationalWrapper.prop('repos')).to.be.undefined;
     }).bind(this));
 
-    it('should renders MembersPage presentational component with repos property equals empty' +
-        'passing state equals { repos: new Array<RepoEntity>() }', sinon.test(() => {
-        let sinon: Sinon.SinonStatic = this;
-
-        let mockStore = createStore({
-            repos: new Array<RepoEntity>()
-        });
-
-        let loadMembersActionMock = sinon.stub(loadMembersActions,
-                                               'loadMembers',
-                                               () => {
-                                                 return {
-                                                   type: 'dummy'
-                                                 }
-                                               }
-                                               );
 
 
-         let loadReposActionMock = sinon.stub(loadReposActions,
-                                                'loadRepos',
-                                                () => {
-                                                  return {
-                                                    type: 'dummy'
-                                                  }
-                                                }
-                                                );
-
-
-        let membersPageContainerWrapper = mount(
-            <Provider store={mockStore}>
-                <MembersPageContainer />
-            </Provider>
-        );
-
-        var membersPagePresentationalWrapper = membersPageContainerWrapper.find('MembersPage');
-        expect(membersPagePresentationalWrapper).not.to.be.undefined;
-        expect(membersPagePresentationalWrapper.prop('repos')).to.be.empty;
-    }).bind(this));
-
-    it('should renders MembersPage presentational component with repos property equals array with one repo' +
-        'passing state equals { repos: [repo] }', sinon.test(() => {
-        let sinon: Sinon.SinonStatic = this;
-
-        let repo = new RepoEntity();
-
-        let mockStore = createStore({
-            repos: [repo]
-        });
-
-        let loadMembersActionMock = sinon.stub(loadMembersActions,
-                                               'loadMembers',
-                                               () => {
-                                                 return {
-                                                   type: 'dummy'
-                                                 }
-                                               }
-                                               );
-
-
-         let loadReposActionMock = sinon.stub(loadReposActions,
-                                                'loadRepos',
-                                                () => {
-                                                  return {
-                                                    type: 'dummy'
-                                                  }
-                                                }
-                                                );
-
-
-        let membersPageContainerWrapper = mount(
-            <Provider store={mockStore}>
-                <MembersPageContainer />
-            </Provider>
-        );
-
-        var membersPagePresentationalWrapper = membersPageContainerWrapper.find('MembersPage');
-        expect(membersPagePresentationalWrapper).not.to.be.undefined;
-        expect(membersPagePresentationalWrapper.prop('repos')).to.have.length(1);
-    }).bind(this));
-/*
     it('should renders MembersPage presentational component and calls to loadMembers' +
         'passing state equals { }', sinon.test(() => {
         let sinon: Sinon.SinonStatic = this;
         let mockStore = createStore({
         });
 
-        let loadMembersActionMock = sinon.stub(loadMembersActions,
-                                               'loadMembers',
+        let loadMembersActionMock = sinon.stub(membersActions,
+                                               'memberRequest',
                                                () => {
                                                  return {
                                                    type: 'dummy'
@@ -250,19 +152,10 @@ describe('MembersPage container component', () => {
                                                }
                                                );
 
-
-         let loadReposActionMock = sinon.stub(loadReposActions,
-                                                'loadRepos',
-                                                () => {
-                                                  return {
-                                                    type: 'dummy'
-                                                  }
-                                                }
-                                                );
-
-
+        // TODO: Check why we have to downcast it to any
+        const nonTypedMockStore : any = mockStore;
         let membersPageContainerWrapper = mount(
-            <Provider store={mockStore}>
+            <Provider store={nonTypedMockStore}>
                 <MembersPageContainer />
             </Provider>
         );
@@ -270,41 +163,4 @@ describe('MembersPage container component', () => {
         var membersPagePresentationalWrapper = membersPageContainerWrapper.find('MembersPage');
         expect(loadMembersActionMock.calledOnce).to.be.true;
     }).bind(this));
-
-    it('should renders MembersPage presentational component and calls to loadRepos' +
-        'passing state equals { }', sinon.test(() => {
-        let sinon: Sinon.SinonStatic = this;
-        let mockStore = createStore({
-        });
-
-        let loadMembersActionMock = sinon.stub(loadMembersActions,
-                                               'loadMembers',
-                                               () => {
-                                                 return {
-                                                   type: 'dummy'
-                                                 }
-                                               }
-                                               );
-
-
-         let loadReposActionMock = sinon.stub(loadReposActions,
-                                                'loadRepos',
-                                                () => {
-                                                  return {
-                                                    type: 'dummy'
-                                                  }
-                                                }
-                                                );
-
-
-        let membersPageContainerWrapper = mount(
-            <Provider store={mockStore}>
-                <MembersPageContainer />
-            </Provider>
-        );
-
-        var membersPagePresentationalWrapper = membersPageContainerWrapper.find('MembersPage');
-        expect(loadReposActionMock.calledOnce).to.be.true;
-    }).bind(this));
 });
-*/
