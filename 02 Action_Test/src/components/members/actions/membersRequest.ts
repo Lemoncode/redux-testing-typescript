@@ -8,8 +8,12 @@ export function memberRequest() {
   // Thunk middleware knows how to turn thunk async actions into actions.
 
   return function (dispatcher) {
-    return memberApi.getAllMembersAsync().then(
+    const promise = memberApi.getAllMembersAsync();
+    
+    memberApi.getAllMembersAsync().then(
       data => dispatcher(membersRequestCompleted(data))
     );
+
+    return  promise;
   };
 }

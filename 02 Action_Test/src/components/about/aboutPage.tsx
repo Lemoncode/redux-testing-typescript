@@ -5,7 +5,7 @@ import * as React from 'react';
 export const AboutPage = () => {
   return (
      <div className="row about-page">
-       <h1 className="jumbotron">00 Start sample</h1>
+       <h1 className="jumbotron">02 Action Unit Tests</h1>
 
        <div className="col-xs-12">
          <h1>
