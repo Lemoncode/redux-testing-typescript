@@ -1,4 +1,4 @@
-# Sample 01: Setup
+# Sample 02: Actions
 
 In this sample we take as starting point sample: "01 Setup" and we will add all unit tests to actions (sync and async ones).
 
@@ -53,4 +53,12 @@ describe('loadMember', () => {
 })
 ````
 
-TODO: ASYNC ACTION
+Testing a synchronous action is something straight forward but, how can we test an action that dispatches another
+action via Redux-Thunk middleware (e.g. ajax calls). The trick here is that we inject a dummy callback
+and then check that the promise returns the expected value. Let's test the _membersRequestAction_.
+
+Under _members/actions_ let's create a subfolder called _spec_
+
+````javascript
+
+````
