@@ -1,7 +1,4 @@
-# Sample 02: Actions
-
-
-**TODO: add to all samples npm install json-loader react-addons-test-utils --save -dev **
+# Sample 03: Components
 
 In this sample we take as starting point sample: "02 Action_Test" and we will add all unit tests to components:
 - Stateless components.
