@@ -12,7 +12,7 @@ We will use _Enzyme_ as component testing library.
 
 Summary:
 
-- Implemenet tests for a stateless component.
+- Implement tests for a stateless component.
 - Implement tests for a container component.
 - Implement test for a presentational component.
 
