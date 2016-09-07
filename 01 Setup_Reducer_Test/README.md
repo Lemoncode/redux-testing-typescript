@@ -29,6 +29,7 @@ Let's start by installing the testing libraries / runners:
 - **mocha**: Mocha is a feature-rich JavaScript test framework running on Node.js and in the browser, making asynchronous testing simple.
 - **redux-mock-store:** A mock store for testing your redux async action creators and middleware.
 - **sinon:** Standalone and test framework agnostic JavaScript test spies, stubs and mocks.
+- **json-loader: json loader for webpack.**
 - **karma:** test runner. A simple tool that allows you to execute JavaScript code in multiple real browsers.
 - **karma-chai:** chai plugin for karma.
 - **karma-chrome-launcher:** chrome browser support plugin for karma.
@@ -36,14 +37,15 @@ Let's start by installing the testing libraries / runners:
 - **karma-sinon:** sinon plugin for karma.
 - **karma-sourcemap-loader:** add source map support to karma (debugging).
 - **karma-webpack:** webpack support for karma.
+- **react-addons-test-utils: makes it easy to test React components in the testing framework of your choice.**
 
 We will do that by running:
 
 ```
-npm install chai deep-freeze enzyme mocha sinon
+npm install chai deep-freeze enzyme mocha json-loader sinon
 redux-mock-store karma karma-chai karma-chrome-launcher
 karma-mocha karma-sinon karma-sourcemap-loader karma-webpack
- --save-dev
+react-addons-test-utils --save-dev
 ```
 
 Then we will install the type definitions for some of this libraries:
