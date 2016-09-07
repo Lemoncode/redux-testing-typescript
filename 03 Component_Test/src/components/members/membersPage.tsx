@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { MemberEntity } from '../../api/memberEntity';
-import { MembersList } from './memberList';
-import { memberRequest } from './actions/membersRequest';
+import { MembersList } from './membersList';
+
 
 // Presentational
 
@@ -12,7 +11,7 @@ interface Props {
   loadMembers : any; // : () => void;
 }
 
-class MembersPage extends React.Component<Props, {}> {
+export class MembersPage extends React.Component<Props, {}> {
 
    // Standard react lifecycle function:
    // https://facebook.github.io/react/docs/component-specs.html
@@ -32,27 +31,3 @@ class MembersPage extends React.Component<Props, {}> {
        );
   }
 }
-
-// Container
-
-const mapStateToProps = (state) => {
-    return {
-      members: state.members
-    }
-}
-
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadMembers: () => {return dispatch(memberRequest())},
-  }
-}
-
-
-const ContainerMembersPage = connect(
-                                   mapStateToProps
-                                  ,mapDispatchToProps
-                                )(MembersPage)
-
-
-export default ContainerMembersPage;

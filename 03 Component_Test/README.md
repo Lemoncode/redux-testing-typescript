@@ -142,4 +142,251 @@ describe('MemberRow presentational component', () => {
 
 Let's continue by adding unit test support to a container component, in this cases ContainerMembersPage.
 
-We are going to create an _spec_ folder under _components/members/_ then we will add a file named member memberPage.container.spec.ts
+We are going to create an _spec_ folder under _components/members/_ then we will add a file named member memberPage.container.spec.tsx
+
+
+````javascript
+import { expect } from 'chai';
+import { mount } from 'enzyme';
+import { Provider } from 'react-redux';
+import * as React from 'react';
+import configureStore from 'redux-mock-store';
+import * as membersActions from '../actions/membersRequest';
+import MembersPageContainer from "../membersPage";
+import {MemberEntity} from '../../../api/memberEntity';
+
+const createStore = configureStore();
+
+describe('MembersPage container component', () => {
+
+    it('should renders MembersPage presentational component with members property equals undefined' +
+        'passing state equals { members: undefined }', sinon.test(() => {
+
+        let sinon: Sinon.SinonStatic = this;
+
+        let mockStore = createStore({
+            members: undefined
+        });
+
+
+        let loadMembersActionMock = sinon.stub(membersActions,
+                                               'memberRequest',
+                                               () => {
+                                                 return {
+                                                   type: 'dummy'
+                                                 }
+                                               }
+                                               );
+
+        // TODO: Check why we have to downcast it to any
+        const nonTypedMockStore : any = mockStore;
+        let membersPageContainerWrapper = mount(
+          <Provider store={nonTypedMockStore}>
+              <MembersPageContainer />
+          </Provider>
+        );
+
+        var membersPagePresentationalWrapper = membersPageContainerWrapper.find('MembersPage');
+        expect(membersPagePresentationalWrapper).not.to.be.undefined;
+        expect(membersPagePresentationalWrapper.prop('members')).to.be.undefined;
+
+    }).bind(this));
+
+    it('should renders MembersPage presentational component with members property equals empty' +
+        'passing state equals { members: new Array<MemberEntity>() }',  sinon.test(() => {
+        let sinon: Sinon.SinonStatic = this;
+        let mockStore = createStore({
+            members: new Array<MemberEntity>()
+        });
+
+        let loadMembersActionMock = sinon.stub(membersActions,
+                                               'memberRequest',
+                                               () => {
+                                                 return {
+                                                   type: 'dummy'
+                                                 }
+                                               }
+                                               );
+
+        // TODO: Check why we have to downcast it to any
+        const nonTypedMockStore : any = mockStore;
+        let membersPageContainerWrapper = mount(
+            <Provider store={nonTypedMockStore}>
+                <MembersPageContainer />
+            </Provider>
+        );
+
+        var membersPagePresentationalWrapper = membersPageContainerWrapper.find('MembersPage');
+        expect(membersPagePresentationalWrapper).not.to.be.undefined;
+        expect(membersPagePresentationalWrapper.prop('members')).to.be.empty;
+    }).bind(this));
+
+    it('should renders MembersPage presentational component with members property equals array with one member' +
+        'passing state equals { members: [member] }', sinon.test(() => {
+        let sinon: Sinon.SinonStatic = this;
+        let member = new MemberEntity();
+
+        let mockStore = createStore({
+            members: [member]
+        });
+
+        let loadMembersActionMock = sinon.stub(membersActions,
+                                               'memberRequest',
+                                               () => {
+                                                 return {
+                                                   type: 'dummy'
+                                                 }
+                                               }
+                                               );
+
+        // TODO: Check why we have to downcast it to any
+        const nonTypedMockStore : any = mockStore;
+        let membersPageContainerWrapper = mount(
+            <Provider store={nonTypedMockStore}>
+                <MembersPageContainer />
+            </Provider>
+        );
+
+        var membersPagePresentationalWrapper = membersPageContainerWrapper.find('MembersPage');
+        expect(membersPagePresentationalWrapper).not.to.be.undefined;
+        expect(membersPagePresentationalWrapper.prop('members')).to.have.length(1);
+    }).bind(this));
+
+    it('should renders MembersPage presentational component with repos property equals undefined' +
+        'passing state equals { repos: undefined }', sinon.test(() => {
+        let sinon: Sinon.SinonStatic = this;
+
+        let mockStore = createStore({
+            repos: undefined
+        });
+
+        let loadMembersActionMock = sinon.stub(membersActions,
+                                               'memberRequest',
+                                               () => {
+                                                 return {
+                                                   type: 'dummy'
+                                                 }
+                                               }
+                                               );
+
+
+        // TODO: Check why we have to downcast it to any
+        const nonTypedMockStore : any = mockStore;
+        let membersPageContainerWrapper = mount(
+            <Provider store={nonTypedMockStore}>
+                <MembersPageContainer />
+            </Provider>
+        );
+
+        var membersPagePresentationalWrapper = membersPageContainerWrapper.find('MembersPage');
+        expect(membersPagePresentationalWrapper).not.to.be.undefined;
+        expect(membersPagePresentationalWrapper.prop('repos')).to.be.undefined;
+    }).bind(this));
+
+
+
+    it('should renders MembersPage presentational component and calls to loadMembers' +
+        'passing state equals { }', sinon.test(() => {
+        let sinon: Sinon.SinonStatic = this;
+        let mockStore = createStore({
+        });
+
+        let loadMembersActionMock = sinon.stub(membersActions,
+                                               'memberRequest',
+                                               () => {
+                                                 return {
+                                                   type: 'dummy'
+                                                 }
+                                               }
+                                               );
+
+        // TODO: Check why we have to downcast it to any
+        const nonTypedMockStore : any = mockStore;
+        let membersPageContainerWrapper = mount(
+            <Provider store={nonTypedMockStore}>
+                <MembersPageContainer />
+            </Provider>
+        );
+
+        var membersPagePresentationalWrapper = membersPageContainerWrapper.find('MembersPage');
+        expect(loadMembersActionMock.calledOnce).to.be.true;
+    }).bind(this));
+});
+````
+
+Just to finish with this component testing tour, let's add unit test support to a presentational component (membersPage), under members/spec we will
+create a file named membersPage.spec.tsx
+
+````javascript
+import { expect } from 'chai';
+import { shallow, mount } from "enzyme";
+import * as React from "react";
+import {MembersPage} from '../membersPage';
+import {MemberEntity} from '../../../api/memberEntity';
+import {MembersList} from '../membersList';
+
+
+
+describe('MembersPage presentational component', () => {
+    it('should renders a div with text equals "No data" and does not calls to loadMembers' +
+        'passing members and repos properties equals undefined and using shallow enzyme method', () => {
+        let loadMembersMock = sinon.spy();
+
+        let properties = {
+            members: undefined,
+            repos: undefined,
+            loadMembers: loadMembersMock,
+        };
+
+        var membersPageWrapper = shallow(
+            <MembersPage {...properties} />
+        );
+
+        expect(membersPageWrapper.type()).to.be.equals('div');
+        expect(membersPageWrapper.text()).to.be.equals('No data');
+        expect(loadMembersMock.calledOnce).to.be.false;
+    });
+
+    it('should renders an empty div with text equals "< />"' +
+        'passing members equals empty array and using shallow enzyme method', () => {
+        let loadMembersMock = sinon.spy();
+
+        let properties = {
+            members: new Array<MemberEntity>(),
+            loadMembers: loadMembersMock,
+        };
+
+        var membersPageWrapper = shallow(
+            <MembersPage {...properties} />
+        );
+
+        expect(membersPageWrapper.type()).to.be.equals('div');
+        expect(membersPageWrapper.text()).to.be.equals('< />');
+        expect(loadMembersMock.calledOnce).to.be.false;
+    });
+
+    it('should renders a div with class equals "row" and two children, MemberList with property members equals array with one member ' +
+        'and does not calls to loadMembers' +
+        'passing members equals [member] array and using shallow enzyme method', () => {
+        let loadMembersMock = sinon.spy();
+
+        let member = new MemberEntity();
+
+        let properties = {
+            members: [member],
+            loadMembers: loadMembersMock            
+        };
+
+        var membersPageWrapper = shallow(
+            <MembersPage {...properties} />
+        );
+
+        expect(membersPageWrapper.type()).to.be.equals('div');
+        expect(membersPageWrapper.hasClass('row')).to.be.true;
+        expect(membersPageWrapper.children().at(0).type()).to.be.equals(MembersList);
+        expect(membersPageWrapper.children().at(0).prop('members')).to.have.length(1);
+        expect(loadMembersMock.calledOnce).to.be.false;
+    });
+});
+
+````

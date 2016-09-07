@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import * as React from 'react';
 import configureStore from 'redux-mock-store';
 import * as membersActions from '../actions/membersRequest';
-import MembersPageContainer from "../membersPage";
+import {MembersPageContainer} from "../membersPageContainer";
 import {MemberEntity} from '../../../api/memberEntity';
 
 const createStore = configureStore();
