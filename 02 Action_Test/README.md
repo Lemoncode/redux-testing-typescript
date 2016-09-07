@@ -61,8 +61,9 @@ Under _members/actions_ let's create a subfolder called _spec_
 
 ````javascript
 
+
 import { expect } from 'chai';
-import configureStore = require('redux-mock-store');
+import configureStore from 'redux-mock-store';
 import {actionsEnums} from '../../../../common/actions/actionsEnum';
 import { memberRequest } from '../membersRequest';
 import { MemberEntity } from '../../../../api/memberEntity';
@@ -71,11 +72,7 @@ import ReduxThunk from 'redux-thunk';
 
 const middlewares = [ ReduxThunk ];
 
-// Typings from redux-mock-store are outdated and throw errors
-// added a workaround meanwhile is being corrected
-// https://github.com/arnaudbenard/redux-mock-store/issues/70
-const nonTypedConfigureStore : any = configureStore;
-const mockStore = nonTypedConfigureStore(middlewares);
+const mockStore = configureStore(middlewares);
 
 describe('loadMembers', () => {
   it('should return a promise, and this promise dispatch assignMembers action that returns ' +
@@ -109,8 +106,8 @@ describe('loadMembers', () => {
 
     store.dispatch(memberRequest())
       .then(() => {
-        expect(store.getActions()[0].type).to.be.equal((expectedAction.type));
-        expect(store.getActions()[0].members.length).to.be.equal(2);
+        expect(store.getActions()[0]['type']).to.be.equal((expectedAction.type));
+        expect(store.getActions()[0]['members']['length']).to.be.equal(2);
         done();
       });
   }).bind(this));

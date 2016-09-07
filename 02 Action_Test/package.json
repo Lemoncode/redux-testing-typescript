@@ -48,7 +48,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.8.0",
     "mocha": "^3.0.2",
-    "redux-mock-store": "^1.1.4",
+    "redux-mock-store": "^1.2.0",
     "sinon": "^1.17.5",
     "style-loader": "^0.13.1",
     "ts-loader": "^0.8.2",

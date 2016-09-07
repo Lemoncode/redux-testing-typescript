@@ -52,10 +52,6 @@ Then we will install the type definitions for some of this libraries:
 typings install dt~mocha dt~chai dt~deep-freeze
 dt~sinon dt~enzyme dt~redux-mock-store --global --save
 ```
-_Note: At the time we published this code redux-mock-store typings definitions
-where not working very well (main project and typings), we have implemented
-a work around to make it work. If you are reading this and the issue
-has been resolved please don't hesitate opening and issue or PR_
 
 Let's create a simple test for a reducer:
 
