@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './components/app.tsx';
 import {AboutPage} from './components/about/aboutPage';
-import MembersPage from './components/members/membersPage';
+import {MembersPageContainer as MembersPage} from './components/members/membersPageContainer';
 import MemberPage from './components/member/memberPage';
 
 ReactDOM.render(
